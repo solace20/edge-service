@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: edge-service
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+  client:
+    region: default
+    registryFetchIntervalSeconds: 5
+    availabilityZones:
+      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
+    service-url: http://localhost:8761/eureka/
+
+  jmx:
+    enabled: false
+server:
+  port: 8081
+#  cloud:
+#    gateway:
+#      default-filters:
+#      - PrefixPath=/httpbin
+#      - AddResponseHeader=X-Response-Default-Foo,Default-Bar
+#      routes:
+#      - id: service_to_consul
+#        uri: lb://user
+#        order: 8000
+#        predicates:
+#        - Path=/user/**
+#        filters:
+#        - StripPrefix=1
+#      - id: websocket_test
+#        uri: localhost:9000
+#        order: 10000
+#        predicates:
+#        - Path=/**

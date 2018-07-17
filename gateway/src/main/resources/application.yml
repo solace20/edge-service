@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: edge-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+server:
+  port: 8081
