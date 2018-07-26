@@ -1,3 +1,14 @@
 spring:
   application:
     name: provider
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    health-check-url-path: /actuator/info
+    status-page-url-path: /actuator/health
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true

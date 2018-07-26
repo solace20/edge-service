@@ -16,21 +16,21 @@ import org.springframework.context.annotation.Bean;
 @EnableDiscoveryClient
 public class GatewayApplication {
 
-	@Autowired
-	private DiscoveryLocatorProperties properties;
+//	@Autowired
+//	private DiscoveryLocatorProperties properties;
 
-	@Bean
-	DiscoveryClientRouteDefinitionLocator discoveryClientRouteDefinitionLocator(DiscoveryClient discoveryClient){
-		properties.setEnabled(true);
-		return new DiscoveryClientRouteDefinitionLocator(discoveryClient,properties);
-	}
+//	@Bean
+//	DiscoveryClientRouteDefinitionLocator discoveryClientRouteDefinitionLocator(DiscoveryClient discoveryClient){
+//		properties.setEnabled(true);
+//		return new DiscoveryClientRouteDefinitionLocator(discoveryClient,properties);
+//	}
 
-	@Bean
-	public RouteLocator customRoutes(RouteLocatorBuilder builder){
-		return builder.routes()
-				.route(r -> r.path("/customers").and().uri("lb://provider"))
-				.build();
-	}
+//	@Bean
+//	public RouteLocator customRoutes(RouteLocatorBuilder builder){
+//		return builder.routes()
+//				.route(r -> r.path("/customers").and().uri("lb://provider"))
+//				.build();
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayApplication.class, args);
